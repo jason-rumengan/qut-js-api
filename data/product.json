@@ -1,0 +1,28 @@
+{
+    "1": {
+        "name": "xyz",
+        "description": "xyz",
+        "price": 99000,
+        "cost": 50000,
+        "stock": 10,
+        "salesCount": 0
+    },
+
+    "2": {
+        "name": "abc",
+        "description": "abc",
+        "price": 49000,
+        "cost": 25000,
+        "stock": 20,
+        "salesCount": 150
+    },
+
+    "3": {
+        "name": "qwe",
+        "description": "qwe",
+        "price": 149000,
+        "cost": 90000,
+        "stock": 5,
+        "salesCount": 10
+    }
+}
