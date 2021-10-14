@@ -5,61 +5,48 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const fs = require('fs');
-const product = __dirname + "/data/product.json";
+const productPath = __dirname + "/data/product.json";
 const parser = bodyParser.json();
+const productFile = fs.readFileSync(productPath, 'utf8');
+var products = JSON.parse(productFile);
 
 // APIs
 // getProducts
 app.get('/product', function (req, res) {
-    fs.readFile(product, 'utf8', function (err, data) {
-        console.log(data);
-        res.end(data);
-    });
+    console.log(products);
+    res.end(JSON.stringify(products));
 })
 
 // getDetails(id)
 app.get('/product/:id', function (req, res) {
-    fs.readFile(product, 'utf8', function (err, data) {
-        const users = JSON.parse(data);
-        const user = users[req.params.id];
-        console.log(user);
-        res.end(JSON.stringify(user));
-    });
+        const product = products[req.params.id];
+        console.log(product);
+        res.end(JSON.stringify(product));
 })
 
 // addProduct(name, description, price, cost, stock)
 app.post('/product', parser, function (req, res) {
-    fs.readFile(product, 'utf8', function (err, data) {
-        data = JSON.parse(data);
         var newProduct = req.body;
-        data[parseInt(Object.keys(data).sort().pop()) + 1] = newProduct;
-        console.log(data);
-        res.end(JSON.stringify(data));
-    });
+        products[parseInt(Object.keys(products).sort().pop()) + 1] = newProduct;
+        console.log(products);
+        res.end(JSON.stringify(products));
 })
 
 // sell(quantity)
 app.post('/product/sell/:id', parser, function (req, res) {
-    fs.readFile(product, 'utf8', function (err, data) {
-        data = JSON.parse(data);
         var quantity = req.body['quantity'];
-        console.log(quantity);
-        data[req.params.id]['stock'] -= quantity;
-        data[req.params.id]['salesCount'] += quantity;
-        console.log(data);
-        res.end(JSON.stringify(data));
-    });
+        products[req.params.id]['stock'] -= quantity;
+        products[req.params.id]['salesCount'] += quantity;
+        console.log(products);
+        res.end(JSON.stringify(products));
 })
 
 // restock(quantity)
 app.post('/product/restock/:id', parser, function (req, res) {
-    fs.readFile(product, 'utf8', function (err, data) {
-        data = JSON.parse(data);
         var quantity = req.body['quantity'];
-        data[req.params.id]['stock'] += quantity;
-        console.log(data);
-        res.end(JSON.stringify(data));
-    });
+        products[req.params.id]['stock'] += quantity;
+        console.log(products);
+        res.end(JSON.stringify(products));
 })
 
 // Server
