@@ -1,5 +1,5 @@
 #!/bin/bash
-product="{\"name\": \"USB-C cable\", \"description\": \"Charge your devices at the speed of light with this cable!\", \"price\": 14900, \"cost\": 10000, \"stock\": 100}"
+product="{\"name\": \"USB-C Cable\", \"description\": \"Charge your devices at the speed of light with this cable!\", \"price\": 14900, \"cost\": 10000, \"stock\": 100}"
 quantity="{\"quantity\": 5}"
 
 echo "Testing getProducts()"
