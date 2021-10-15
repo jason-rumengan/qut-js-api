@@ -13,22 +13,24 @@ var products = JSON.parse(productFile);
 // APIs
 // getProducts
 app.get('/product', function (req, res) {
-    console.log(products);
+//     console.log(products);
     res.end(JSON.stringify(products));
 })
 
 // getDetails(id)
 app.get('/product/:id', function (req, res) {
         const product = products[req.params.id];
-        console.log(product);
+        // console.log(product);
         res.end(JSON.stringify(product));
 })
 
 // addProduct(name, description, price, cost, stock)
 app.post('/product', parser, function (req, res) {
         var newProduct = req.body;
-        products[parseInt(Object.keys(products).sort().pop()) + 1] = newProduct;
-        console.log(products);
+        var productID = parseInt(Object.keys(products).sort().pop()) + 1;
+        products[productID] = newProduct;
+        products[productID]['salesCount'] = 0;
+        // console.log(products);
         res.end(JSON.stringify(products));
 })
 
@@ -37,7 +39,7 @@ app.post('/product/sell/:id', parser, function (req, res) {
         var quantity = req.body['quantity'];
         products[req.params.id]['stock'] -= quantity;
         products[req.params.id]['salesCount'] += quantity;
-        console.log(products);
+        // console.log(products);
         res.end(JSON.stringify(products));
 })
 
@@ -45,7 +47,7 @@ app.post('/product/sell/:id', parser, function (req, res) {
 app.post('/product/restock/:id', parser, function (req, res) {
         var quantity = req.body['quantity'];
         products[req.params.id]['stock'] += quantity;
-        console.log(products);
+        // console.log(products);
         res.end(JSON.stringify(products));
 })
 
