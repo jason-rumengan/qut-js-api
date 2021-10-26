@@ -47,10 +47,11 @@ Electrocharged's store API is coded in the main.js file and consists of the foll
   }
   ```
 
-You can run `npm start` to start the server.
-Please follow the instructions shown on [the npm documentation](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) to install Node.js and npm.  
+First, install the dependencies using `npm install` on your terminal. You only need to do this once.   
+You can then run `npm start` to start the server.
+Please follow the instructions shown on [the Node.js download page](https://nodejs.org/en/download/) to install Node.js and npm.  
 
-We will be using [the Postman API platform](https://www.postman.com) to test our API.
+We will be using [the Postman API platform](https://www.postman.com/downloads/) to test our API.
 Please follow the instructions shown on their website to install Postman and begin testing.
 
 ## What We'll Do
